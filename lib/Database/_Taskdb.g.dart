@@ -33,15 +33,13 @@ class Taskdb extends _Taskdb with RealmEntity, RealmObjectBase, RealmObject {
   set Taskname(String value) => RealmObjectBase.set(this, 'Taskname', value);
 
   @override
-  String get TaskDetail =>
-      RealmObjectBase.get<String>(this, 'TaskDetail') as String;
-  @override
-  set TaskDetail(String value) =>
-      RealmObjectBase.set(this, 'TaskDetail', value);
+  String get TaskDetail => RealmObjectBase.get<String>(this, 'TaskDetail') as String;
 
   @override
-  String get Taskpriority =>
-      RealmObjectBase.get<String>(this, 'Taskpriority') as String;
+  set TaskDetail(String value) => RealmObjectBase.set(this, 'TaskDetail', value);
+
+  @override
+  String get Taskpriority => RealmObjectBase.get<String>(this, 'Taskpriority') as String;
   @override
   set Taskpriority(String value) =>
       RealmObjectBase.set(this, 'Taskpriority', value);

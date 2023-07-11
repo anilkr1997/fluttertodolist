@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertodolist/main.dart';
 import 'package:realm/realm.dart';
+import 'package:fluttertodolist/Database/Uttil.dart';
 
 import '../Database/_Taskdb.dart';
 
@@ -109,7 +110,18 @@ Navigator.pop(context);
                     onPressed: () {
                       setState(() {
                         if(validation()){
-realm.write(() => realm.add(Taskdb( 0,tasktitle.text.toString(), taskdesc.text.toString(), taskprority.text.toString())));
+                          int id=1;
+                          if(realm.all<Taskdb>().isNotEmpty){
+                             id=realm.all<Taskdb>().last.id;
+                            id++;
+                            realm.write(() => realm.add(Taskdb( id,tasktitle.text.toString(), taskdesc.text.toString(), taskprority.text.toString())));
+                             Uttil.showmassage(context,"Data Uploaded Successfully");
+                          }else{
+
+                            realm.write(() => realm.add(Taskdb( id,tasktitle.text.toString(), taskdesc.text.toString(), taskprority.text.toString())));
+                            Uttil.showmassage(context,"Data Uploaded Successfully");
+
+                          }
 
                        }
                       });
